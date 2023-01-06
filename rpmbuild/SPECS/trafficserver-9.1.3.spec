@@ -148,7 +148,6 @@ fi
 %else
 /etc/init.d/trafficserver
 %endif
-/opt/trafficserver/openssl
 /opt/trafficserver/bin
 %config(noreplace) %{_sysconfdir}/sysconfig/trafficserver
 %{_sysconfdir}/rsyslog.d/trafficserver.conf
