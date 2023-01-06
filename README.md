@@ -8,16 +8,24 @@ This is to provide some help to build Traffic Server using docker.
 
 - Clone this repository
 
-`git clone https://github.com/smalenfant/docker-trafficserver-build.git`
+```
+git clone https://github.com/webcloud-pro/docker-trafficserver-build.git
+```
 
-- Download the required Traffic Server version in the SOURCE directory
+- Add permissions to rpmbuild folder
 
-`cd docker-trafficserver-build && curl -L http://archive.apache.org/dist/trafficserver/trafficserver-9.1.3.tar.bz2 -o trafficserver-9.1.3-13496.tar.bz2`
+```
+cd docker-trafficserver-build
+chown 1000:1000 rpmbuild
+```
+
+- Download the required Traffic Server version from http://archive.apache.org/dist/trafficserver/ in the SOURCE directory 
+
+```
+curl -L http://archive.apache.org/dist/trafficserver/trafficserver-9.1.3.tar.bz2 -o rpmbuild/SOURCES/trafficserver-9.1.3-13496.tar.bz2
+```
 
 - Update the SPEC files accordingly. 
-
-
-http://archive.apache.org/dist/trafficserver/
 
 - Start the build container
 
