@@ -53,8 +53,8 @@ autoreconf -vfi
 #%setup
 
 %build
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/trafficserver/openssl/lib:/usr/local/lib
-./configure --prefix=%{install_prefix}/%{name} --with-user=ats --with-group=ats --with-build-number=%{release} --enable-experimental-plugins --with-jansson=/jansson --with-cjose=/cjose -with-openssl=/opt/trafficserver/openssl --disable-unwind
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+./configure --prefix=%{install_prefix}/%{name} --with-user=ats --with-group=ats --with-build-number=%{release} --enable-experimental-plugins --with-jansson=/jansson --with-cjose=/cjose --disable-unwind
 make %{?_smp_mflags}
 
 %install
@@ -87,9 +87,6 @@ cp $RPM_BUILD_DIR/%{name}-%{version}/rc/trafficserver %{buildroot}/etc/init.d
 %endif
 
 mkdir -p $RPM_BUILD_ROOT%{install_prefix}/trafficserver/etc/trafficserver/snapshots
-
-mkdir -p $RPM_BUILD_ROOT/opt/trafficserver/openssl
-cp -r /opt/trafficserver/openssl/lib $RPM_BUILD_ROOT/opt/trafficserver/openssl/lib
 
 %clean
 rm -rf $RPM_BUILD_ROOT
